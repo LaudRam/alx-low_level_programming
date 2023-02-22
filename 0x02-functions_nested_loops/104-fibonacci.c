@@ -6,7 +6,14 @@
 
 int main(void)
 {
-	unsigned long int i, a = 1, b = 2, c = 1000000000, a1, a2, b1, b2;
+	unsigned long int i;
+	unsigned long int a = 1;
+	unsigned long int b = 2;
+	unsigned long int c = 1000000000;
+	unsigned long int a1;
+	unsigned long int a2;
+	unsigned long int b1;
+	unsigned long int b2;
 
 	printf("%lu", a);
 	for (i = 1; i < 91; i++)
