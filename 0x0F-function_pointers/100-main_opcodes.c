@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	bytes = atoi(argv[i]);
+	bytes = atoi(argv[1]);
 
 	if (bytes < 0)
 	{
