@@ -41,7 +41,7 @@ int exponential_search(int *array, size_t size, int value)
  * Return: The index in which the value is located. Or if it does not exits
  * or array is NULL -1.
  */
- 
+
 int b_search(int *array, size_t size, int low, int high, int value)
 {
 	if (array == NULL || size == 0)
