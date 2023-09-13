@@ -1,13 +1,13 @@
 #include "search_algos.h"
 
 /**
- * exponential_search - Searches for a value in a sorted array of integers
- * using the Exponential search algorithm
- * @array: pointer to the first element of the array to search in
- * @size: number of elements in array
- * @value: value to search for
- * Return: index where the value was found or -1
+ * exponential_search - Tries to locate a number in the array
+ * @array: Pointer to the first element of the array to search in
+ * @size: Number of elements in array
+ * @value: The value to search for.
+ * Return: The index where the value was found or -1
  */
+
 int exponential_search(int *array, size_t size, int value)
 {
 	size_t idx;
@@ -31,14 +31,17 @@ int exponential_search(int *array, size_t size, int value)
 }
 
 /**
- * b_search - Searches for a value in an array by splitting the array in half
- * @array: list of integer numbers sorted in an ascending order
- * @size: total amount of numbers in the array
- * @value: element that the algorithm is trying to find
- * @low: lowest point in the array
- * @high: highest point of the array
- * Return: index in which the value is located, else -1
+ * b_search - Searches for a value in an array by splitting the array in
+ * half every time.
+ * @array: List of integer numbers sorted in an ascending order
+ * @size: The total amount of numbers in the array.
+ * @value: The element that the algorithm is trying to find.
+ * @low: The lowest point in the array.
+ * @high: The highest point of the array.
+ * Return: The index in which the value is located. Or if it does not exits
+ * or array is NULL -1.
  */
+ 
 int b_search(int *array, size_t size, int low, int high, int value)
 {
 	if (array == NULL || size == 0)
@@ -52,4 +55,59 @@ int b_search(int *array, size_t size, int low, int high, int value)
 		return (-1);
 	}
 	return (finder(array, size, low, high, value));
+}
+
+/**
+ * finder - Finds a value in an array.
+ * @array: List of integer numbers sorted in an ascending order
+ * @size: The total amount of numbers in the array.
+ * @value: The element that the algorithm is trying to find.
+ * @low: The low end of the array.
+ * @high: The high end of the array.
+ * Return: The index in which the value is located. Or if it does not exits
+ * or array is NULL -1
+ */
+int finder(int *array, size_t size, size_t low, size_t high, int value)
+{
+	int mid;
+
+	mid = size / 2 + low;
+
+	print_array(array, low, high);
+
+	if (array[mid] == value)
+		return (mid);
+	if (array[mid] < value)
+	{
+		low = mid + 1;
+		size = high - low;
+	}
+	else if (array[mid] > value)
+	{
+		high = mid - 1;
+		size = mid - low;
+	}
+	if (size == 0 && array[mid + 1] != value)
+	{
+		print_array(array, low, high);
+		return (-1);
+	}
+	return (finder(array, size, low, high, value));
+}
+
+/**
+ * print_array - Prints an array of integers separated by a comma and space.
+ * @array: List of integer numbers sorted in an ascending order.
+ * @low: The low end of the array.
+ * @high: The high end of the array.
+ */
+void print_array(int *array, size_t low, size_t high)
+{
+	printf("Searching in array: ");
+	while (low < high)
+	{
+		printf("%d, ", array[low]);
+		low++;
+	}
+	printf("%d\n", array[low]);
 }
