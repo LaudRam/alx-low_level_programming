@@ -1,13 +1,11 @@
 #include "search_algos.h"
 
 /**
- * advanced_binary - Searches for a value in an array by splitting the arrayin
- * half every time.
+ * advanced_binary - Searches for a value in a sorted array of integers
  * @array: List of integer numbers sorted in an ascending order
  * @size: The total amount of numbers in the array.
  * @value: The element that the algorithm is trying to find.
- * Return: The index in which the value is located. Or if it does not exits
- * or array is NULL -1
+ * Return: The index in which the value is located, else -1
  */
 int advanced_binary(int *array, size_t size, int value)
 {
